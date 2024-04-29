@@ -25,4 +25,35 @@ window.addEventListener("hashchange", function() {
     start();
 });
 
+function next(button) {
+    const slider = button.parentElement.parentElement;
+    const slides = slider.querySelectorAll('.slide');
+    let currentIndex = 0;
+    
+
+    slides.forEach((slide, index) => {
+        if (slide.classList.contains('active')) {
+            currentIndex = index;
+            slide.classList.remove('active');
+        }
+    });
+
+    currentIndex++;
+    if (currentIndex >= slides.length) currentIndex = 0;
+
+    slides[currentIndex].classList.add('active');
+}
+
+setInterval(() => {
+    const button1 = document.querySelector('.next1'); 
+    const button2 = document.querySelector('.next2'); 
+    const button3 = document.querySelector('.next3'); 
+    next(button1);
+    next(button2);
+    next(button3);
+    
+}, 4000);
+
+
+
 
